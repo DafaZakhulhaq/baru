@@ -11,11 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
 import id.sch.smktelkom_mlg.visionet.daftarsiswaapp.adapter.SiswaAdapter;
 import id.sch.smktelkom_mlg.visionet.daftarsiswaapp.model.Siswa;
 import id.sch.smktelkom_mlg.visionet.daftarsiswaapp.util.DummyData;
@@ -26,8 +24,6 @@ public class MainActivity extends AppCompatActivity implements SiswaAdapter.ISis
     SiswaAdapter adapter;
     ArrayList<Siswa> list;
     int itemPos;
-    @BindView(R.id.imageButton)
-    ImageButton imgb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,22 +92,36 @@ public class MainActivity extends AppCompatActivity implements SiswaAdapter.ISis
 
 
     @Override
-    public void doDelete(int position) {
+    public void doDelete(final int position) {
 
-        itemPos = position;
-        final Siswa hotel = list.get(position);
-        list.remove(itemPos);
+        final Siswa siswa = list.get(position);
+        list.remove(position);
         adapter.notifyDataSetChanged();
-        Snackbar.make(findViewById(R.id.fab), " Terhapus", Snackbar.LENGTH_LONG).setAction("UNDO", new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                list.add(itemPos, hotel);
-                adapter.notifyDataSetChanged();
-            }
-        }).show();
-
+        RecyclerView rvSiswa = (RecyclerView) findViewById(R.id.recyclerViewSiswa);
+        Snackbar.make(rvSiswa, "Batal Menghapus ?", Snackbar.LENGTH_LONG)
+                .setAction("Undo", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        refreshData();
+                        //list.add(position,siswa);
+                        //adapter.notifyDataSetChanged();
+                    }
+                })
+                .setCallback(new Snackbar.Callback() {
+                    @Override
+                    public void onDismissed(Snackbar snackbar, int event) {
+                        super.onDismissed(snackbar, event);
+                        if (event != DISMISS_EVENT_ACTION) {
+                            refreshData();
+                            Siswa siswa = list.get(position);
+                            siswa.delete();
+                            refreshData();
+                        }
+                    }
+                })
+                .show();
     }
+
 
     private void addSiswa() {
 
@@ -171,15 +181,15 @@ public class MainActivity extends AppCompatActivity implements SiswaAdapter.ISis
 
     @Override
     public void itemClick(Siswa siswa) {
-    /*    Intent intent = new Intent(this, DetailSiswaActivity.class);
+        Intent intent = new Intent(this, DetailSiswaActivity.class);
         intent.putExtra(SISWA,siswa);
         startActivity(intent);
-    */
     }
 
 
     @Override
-    public void itemLongClick(final int position) {/*
+    public void itemLongClick(final int position) {
+/*
         final Siswa siswa = list.get(position);
         list.remove(position);
         adapter.notifyDataSetChanged();
@@ -211,7 +221,8 @@ public class MainActivity extends AppCompatActivity implements SiswaAdapter.ISis
                         }
                     }
                 })
-                .show();*/
+                .show();
+*/
     }
 
 }

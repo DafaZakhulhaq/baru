@@ -72,7 +72,7 @@ public class SiswaAdapter extends RecyclerView.Adapter<SiswaAdapter.ViewHolder> 
 
         void itemLongClick(int position);
 
-        void doDelete(int Position);
+        void doDelete(int position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

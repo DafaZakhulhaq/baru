@@ -6,7 +6,6 @@ import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,16 +17,6 @@ public class Siswa extends Model implements Serializable {
     @Column
     public String nama;
     @Column
-    public String kelas;
-    @Column
-    public byte noAbsen;
-    @Column
-    public String nis;
-    @Column
-    public String tempatLahir;
-    @Column
-    public Date tglLahir;
-    @Column
     public String alamat;
     @Column
     public String foto;
@@ -36,15 +25,9 @@ public class Siswa extends Model implements Serializable {
         super();
     }
 
-    public Siswa(String nama, String kelas, byte noAbsen, String nis, String tempatLahir,
-                 Date tglLahir, String alamat, String foto) {
+    public Siswa(String nama, String alamat, String foto) {
         super();
         this.nama = nama;
-        this.kelas = kelas;
-        this.noAbsen = noAbsen;
-        this.nis = nis;
-        this.tempatLahir = tempatLahir;
-        this.tglLahir = tglLahir;
         this.alamat = alamat;
         this.foto = foto;
     }
