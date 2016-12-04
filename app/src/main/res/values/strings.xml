@@ -91,4 +91,22 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Instant</string>
+    <string name="slide_1_desc">Mudah dalam penggunaan sehari-hari</string>
+
+    <string name="slide_2_title">Selalu Ingat</string>
+    <string name="slide_2_desc">Disertai alarm untuk mengingatkan waktu deadline</string>
+
+    <string name="slide_3_title">Bookmark</string>
+    <string name="slide_3_desc">Simpan to do list kamu di aplikasi ini</string>
+
+    <string name="slide_4_title">Love</string>
+    <string name="slide_4_desc">Dibuat dengan penuh cinta di Kota Malang!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 </resources>
